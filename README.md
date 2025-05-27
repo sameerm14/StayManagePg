@@ -43,36 +43,20 @@ The PG Management System is a full-featured web application designed to simplify
 
 ## 🚀 Getting Started
 
-### Backend (Spring Boot)
+### Backend Setup (Spring Boot)
 
+1. Clone the repo and navigate to the backend folder:
 
-## Project Structure
-pg-management-system/
-├── backend/
-│   ├── src/main/java/... (Spring Boot code)
-│   └── application.properties
-├── frontend/
-│   ├── src/app/... (Angular components)
-│   └── angular.json
-└── README.md
+   ```bash
+   git clone https://github.com/your-username/pg-management-system.git
+   cd pg-management-system/backend
+2. Create a MySQL database:
 
-## License
-This project is licensed under the MIT License
+   CREATE DATABASE pg_management;
 
-##👨‍💻 Author
-Sameer Nadaf
+4. Open src/main/resources/application.properties and update your MySQL credentials:
 
-LinkedIn
-
-
-🟢 Just paste this in your repo’s `README.md` file — **done and dusted**.
-
-If you want this as a downloadable `.md` file, just let me know.
-
-```bash
-git clone https://github.com/your-username/pg-management-system.git
-cd backend
-
-1. Configure application.properties with your MySQL credentials
-
-
+spring.datasource.url=jdbc:mysql://localhost:3306/pg_management
+spring.datasource.username=your_mysql_username
+spring.datasource.password=your_mysql_password
+spring.jpa.hibernate.ddl-auto=update
