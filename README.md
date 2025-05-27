@@ -57,7 +57,7 @@ The PG Management System is a full-featured web application designed to simplify
    ```bash
    CREATE DATABASE pg_management;
 
-4. Open src/main/resources/application.properties and update your MySQL credentials:
+3. Open src/main/resources/application.properties and update your MySQL credentials:
 
     ```bash
     
@@ -65,3 +65,53 @@ The PG Management System is a full-featured web application designed to simplify
    spring.datasource.username=your_mysql_username
    spring.datasource.password=your_mysql_password
    spring.jpa.hibernate.ddl-auto=update
+
+4. Run the Spring Boot server:
+   
+   ```bash
+   mvn spring-boot:run
+
+5. Backend will be running at: http://localhost:8080
+
+## Frontend Setup (Angular)
+
+1. Navigate to the frontend folder:
+
+   ```bash
+   cd ../frontend
+   
+2. Install dependencies:
+
+   ```bash
+   npm install
+
+3. Run the Angular app:
+
+   ```bash
+   ng serve
+
+4. Frontend will be running at: http://localhost:4200
+
+## 📁 Project Structure
+
+         pg-management-system/
+         ├── backend/
+         │   ├── src/main/java/... (Spring Boot code)
+         │   └── src/main/resources/application.properties
+         ├── frontend/
+         │   ├── src/app/... (Angular components)
+         │   └── angular.json
+         └── README.md
+         
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 👨‍💻 Author
+
+Sameer Nadaf
+LinkedIn
+
+
+You can copy this **whole thing** as one README.md file for your repo. Let me know if you want me to help create the file for you!
+
