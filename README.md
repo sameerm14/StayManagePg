@@ -50,13 +50,14 @@ The PG Management System is a full-featured web application designed to simplify
    ```bash
    git clone https://github.com/your-username/pg-management-system.git
    cd pg-management-system/backend
+   
 2. Create a MySQL database:
 
    CREATE DATABASE pg_management;
 
 4. Open src/main/resources/application.properties and update your MySQL credentials:
 
-spring.datasource.url=jdbc:mysql://localhost:3306/pg_management
-spring.datasource.username=your_mysql_username
-spring.datasource.password=your_mysql_password
-spring.jpa.hibernate.ddl-auto=update
+   spring.datasource.url=jdbc:mysql://localhost:3306/pg_management
+   spring.datasource.username=your_mysql_username
+   spring.datasource.password=your_mysql_password
+   spring.jpa.hibernate.ddl-auto=update
