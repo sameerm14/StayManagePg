@@ -45,8 +45,34 @@ The PG Management System is a full-featured web application designed to simplify
 
 ### Backend (Spring Boot)
 
+
+## Project Structure
+pg-management-system/
+├── backend/
+│   ├── src/main/java/... (Spring Boot code)
+│   └── application.properties
+├── frontend/
+│   ├── src/app/... (Angular components)
+│   └── angular.json
+└── README.md
+
+## License
+This project is licensed under the MIT License
+
+##👨‍💻 Author
+Sameer Nadaf
+
+LinkedIn
+
+
+🟢 Just paste this in your repo’s `README.md` file — **done and dusted**.
+
+If you want this as a downloadable `.md` file, just let me know.
+
 ```bash
 git clone https://github.com/your-username/pg-management-system.git
 cd backend
 
 1. Configure application.properties with your MySQL credentials
+
+
