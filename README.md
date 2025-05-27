@@ -39,7 +39,7 @@ The PG Management System is a full-featured web application designed to simplify
 | Backend       | Spring Boot (Java) |
 | Database      | MySQL              |
 | PDF Generator | iText              |
-| Authentication| (Optional) JWT     |
+| Authentication|  JWT               |
 
 ## 🚀 Getting Started
 
