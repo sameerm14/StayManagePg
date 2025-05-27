@@ -110,7 +110,7 @@ This project is licensed under the MIT License.
 ## 👨‍💻 Author
 
 Sameer Nadaf
-LinkedIn
+[LinkedIn](https://www.linkedin.com/in/sameer-nadaf-logged/)
 
 
 You can copy this **whole thing** as one README.md file for your repo. Let me know if you want me to help create the file for you!
