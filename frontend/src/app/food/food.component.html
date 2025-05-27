@@ -1,0 +1,104 @@
+<app-navbar></app-navbar>
+<div class="container mt-4">
+  <h2>Add / Update Food Item</h2>
+  <form (ngSubmit)="onSubmit()" #foodForm="ngForm">
+    <!-- Meal Type -->
+    <div class="form-group mb-3 pad">
+      <label for="mealType">Meal Type</label>
+      <select
+        class="form-control"
+        id="mealType"
+        name="mealType"
+        [(ngModel)]="food.mealType"
+        required
+      >
+        <option value="" disabled selected>Select meal type</option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Dinner">Dinner</option>
+      </select>
+    </div>
+
+    <!-- Food Name -->
+    <div class="form-group mb-3">
+      <label for="foodName">Food Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="foodName"
+        name="foodName"
+        [(ngModel)]="food.foodName"
+        required
+      />
+    </div>
+
+    <!-- Food Description -->
+    <div class="form-group mb-3">
+      <label for="foodDescription">Description</label>
+      <textarea
+        class="form-control"
+        id="foodDescription"
+        name="foodDescription"
+        [(ngModel)]="food.foodDescription"
+      ></textarea>
+    </div>
+
+    <!-- Meal Start Time -->
+    <div class="form-group mb-3">
+      <label for="mealStartTime">Meal Start Time</label>
+      <input
+        type="time"
+        class="form-control"
+        id="mealStartTime"
+        name="mealStartTime"
+        [(ngModel)]="food.mealStartTime"
+        required
+      />
+    </div>
+
+    <!-- Meal End Time -->
+    <div class="form-group mb-3">
+      <label for="mealEndTime">Meal End Time</label>
+      <input
+        type="time"
+        class="form-control"
+        id="mealEndTime"
+        name="mealEndTime"
+        [(ngModel)]="food.mealEndTime"
+        required
+      />
+    </div>
+
+    <!-- Day of the Week -->
+    <div class="form-group mb-3 pad">
+      <label for="dayOfWeek">Day of Week</label>
+      <select
+        class="form-control"
+        id="dayOfWeek"
+        name="dayOfWeek"
+        [(ngModel)]="food.dayOfWeek"
+        required
+      >
+        <option value="" disabled selected>Select a day</option>
+        <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+      </select>
+    </div>
+
+    <!-- Image URL -->
+    <div class="form-group mb-3">
+      <label for="imageUrl">Image URL</label>
+      <input type="file" (change)="onFileChange($event)" multiple />
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!foodForm.form.valid"
+    >
+      Submit
+    </button>
+    <p *ngIf="message" [style.color]="messageColor">{{ message }}</p>
+  </form>
+</div>
+<app-footer></app-footer>

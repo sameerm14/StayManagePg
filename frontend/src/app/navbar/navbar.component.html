@@ -1,0 +1,45 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/adminPanel">Stay Manage</a>
+
+    <div class="navbar-toggle" (click)="toggleNavbar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="navbar-links" [class.active]="menuOpen">
+    <!-- Admin Links -->
+
+    <a routerLink="/addrooms" *ngIf="isAdmin">AddRooms</a>
+    <a routerLink="/addroomsomages" *ngIf="isAdmin">AddRoomImages</a>
+    <a routerLink="/showrooms" *ngIf="isAdmin">Rooms</a>
+    <div class="dropdown" *ngIf="isAdmin">
+      <a class="dropbtn">Tenants ▾</a>
+      <div class="dropdown-content">
+        <a routerLink="/tenants">Add</a>
+        <a routerLink="/viewtenant">View</a>
+      </div>
+    </div>
+    <div class="dropdown" *ngIf="isAdmin">
+      <a class="dropbtn">Rent ▾</a>
+      <div class="dropdown-content">
+        <a routerLink="/rent-tracking">Rent</a>
+        <a routerLink="/generatePdf">Create pdf</a>
+      </div>
+    </div>
+
+    <a routerLink="/food" *ngIf="isAdmin">Food</a>
+    <a routerLink="/notifications" *ngIf="isAdmin">Notifications</a>
+
+    <!-- Tenant Links -->
+    <a routerLink="/myRoom" *ngIf="isTenant">My Room</a>
+    <a routerLink="/myFood" *ngIf="isTenant">Food Menu</a>
+    <a routerLink="/RentPay" *ngIf="isTenant">Pay Rent</a>
+    <a routerLink="/viewnotifications" *ngIf="isTenant">Notifications</a>
+    <a routerLink="/myprofile" *ngIf="isTenant">My profile</a>
+    <!-- Common -->
+    <a (click)="confirmLogout($event)">Logout</a>
+  </div>
+</nav>

@@ -1,0 +1,47 @@
+/* services.component.css */
+.services-coming-soon {
+  perspective: 1000px;
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 10%;
+}
+
+.service-hologram.active {
+  transform: rotateX(10deg);
+}
+
+.service-title {
+  font-size: 2rem;
+  margin-bottom: 15px;
+
+  background-clip: text;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.service-subtitle {
+  color: black;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 1px;
+  display: inline-block;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

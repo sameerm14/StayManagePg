@@ -1,0 +1,93 @@
+/* General Styles */
+:host {
+  display: block;
+  min-height: 100vh;
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 7rem auto;
+  padding: 0 20px;
+}
+
+/* Message Card Styles */
+.container > div {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 4px solid #3f51b5;
+}
+
+.container > div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+p {
+  color: #495057;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+small {
+  color: #6c757d;
+  font-size: 0.85rem;
+  display: block;
+  text-align: right;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    margin: 9rem auto;
+    padding: 0 15px;
+  }
+
+  .container > div {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Animation for message entries */
+.container > div {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delay animations for each message */
+.container > div:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.container > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.container > div:nth-child(3) {
+  animation-delay: 0.3s;
+}
+/* Add more if needed */

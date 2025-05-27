@@ -1,0 +1,55 @@
+<body>
+  <div class="container mt-4">
+    <h2>Register Tenant</h2>
+    <form (ngSubmit)="registerTenant()" #tenantForm="ngForm">
+      <!-- Mobile -->
+      <div class="form-group mb-3">
+        <label for="mobile">Mobile Number</label>
+        <input
+          type="text"
+          id="phone"
+          class="form-control"
+          required
+          name="phone"
+          [(ngModel)]="tenant.phone"
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="form-group mb-3">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          id="email"
+          class="form-control"
+          required
+          name="email"
+          [(ngModel)]="tenant.email"
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="form-group mb-3">
+        <label for="pass">Password</label>
+        <input
+          type="pass"
+          id="pass"
+          class="form-control"
+          required
+          name="pass"
+          [(ngModel)]="tenant.pass"
+        />
+      </div>
+      <h3 *ngIf="successMessage" [style.color]="messageColor">
+        {{ successMessage }}
+      </h3>
+      <button type="submit" class="btn btn-primary">Register</button>
+      <button (click)="logintenant()" class="btn btn-primary">
+        Tenant Login
+      </button>
+      <button (click)="gotoSignup()" class="btn btn-danger">
+        admin signup
+      </button>
+    </form>
+  </div>
+</body>

@@ -1,0 +1,214 @@
+.room-container {
+  padding: 1.5rem;
+  margin: 4% 3%;
+
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+html,
+body {
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  margin: 0;
+  padding: 0;
+}
+.room-container h3 {
+  color: #2d3436;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.room-container p {
+  color: #636e72;
+  margin-bottom: 1rem;
+  margin-left: -17px;
+  font-size: 100;
+}
+
+.imageheading {
+  color: #2d3436;
+  margin: 1.5rem 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.images-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  aspect-ratio: 1.78; /* 16:9 aspect ratio */
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .images-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .images-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Occupancy status indicator */
+.room-container p::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.room-container p:has-text("Occupied")::before {
+  background-color: #ff7675;
+}
+
+.room-container p:has-text("Available")::before {
+  background-color: #55efc4;
+}
+.no-images-message {
+  color: #777;
+  font-style: italic;
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: 1px dashed #ccc;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  display: inline-block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.remove-room-btn {
+  background-color: #e74c3c; /* Red color for delete */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.remove-room-btn:hover {
+  background-color: #c0392b;
+}
+
+.remove-room-btn:active {
+  transform: scale(0.98);
+}
+
+.no-rooms-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background: #f4f6f8;
+  border: 2px dashed #c2c2c2;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  padding: 30px;
+  color: #444;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.floor-block {
+  padding: 0.75rem 1.5rem;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #8686f5, #c8c8c8);
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1),
+    -2px -2px 6px rgba(255, 255, 255, 0.8);
+  min-width: 120px;
+}
+.no-rooms-message h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2e3a59;
+  margin: 0;
+}
+.floor-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: start;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.floor-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  padding-top: 80px; /* keep this if navbar is fixed */
+  justify-content: center;
+}
+
+.floor-block:hover {
+  border-radius: 16px;
+  background-color: #1e3a8a;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(30, 58, 138, 0.2);
+}
+.floor-block.active {
+  border-radius: 16px;
+  background-color: #1e40af;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 6px 14px rgba(30, 64, 175, 0.4);
+}
+h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: #2c3e50; /* Dark slate blue */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 600px) {
+  .floor-block {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+    min-width: 100px;
+    margin: 3rem auto 7px auto;
+  }
+
+  .floor-blocks {
+    gap: 0.75rem;
+  }
+}

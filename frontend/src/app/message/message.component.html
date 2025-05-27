@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+
+<div class="notification-container">
+  <h2 class="form-title">Send Notification</h2>
+
+  <form (ngSubmit)="sendNotification()" #notificationForm="ngForm">
+    <!-- Title Input -->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        [(ngModel)]="notification.title"
+        required
+      />
+    </div>
+
+    <!-- Message Input -->
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea
+        id="message"
+        name="message"
+        rows="4"
+        [(ngModel)]="notification.message"
+        required
+      ></textarea>
+    </div>
+    <h3 *ngIf="message" [style.color]="messageColor">{{ message }}</h3>
+    <!-- Send Button -->
+    <button
+      type="submit"
+      [disabled]="!notificationForm.form.valid"
+      class="send-btn"
+    >
+      Send Notification
+    </button>
+  </form>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,104 @@
+/* Form Container */
+.container {
+  max-width: 600px;
+  margin: 7rem auto 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+h1 {
+  color: #276749;
+}
+/* Form Labels */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #2d3748;
+  font-size: 0.95rem;
+}
+
+.due {
+  width: 95%;
+}
+/* Input Fields */
+input[type="number"],
+select {
+  width: 92%;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #4a5568;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="number"]:focus,
+select:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+/* Select Dropdown */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234a5568' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  padding-right: 2.5rem;
+  width: 100%;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #3182ce;
+}
+
+button[type="submit"]:active {
+  background-color: #2b6cb0;
+}
+
+/* Report Message */
+p {
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 6px;
+  background-color: #f0fff4;
+  color: #276749;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* Error Message Style - You can add this class dynamically */
+.error-message {
+  background-color: #fff5f5;
+  color: #c53030;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .container {
+    margin: 9rem 1rem 2rem 1rem;
+    padding: 1.5rem;
+  }
+}

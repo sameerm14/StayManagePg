@@ -1,0 +1,202 @@
+/* Dark/Light Theme Variables */
+:root {
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #2e2e2e;
+  --bg-accent: #333;
+  --text-primary: #ffffff;
+  --text-secondary: #f0f0f0;
+  --border-color: #444;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --paid-color: #4caf50;
+  --pending-color: #ff9800;
+  --overdue-color: #f44336;
+  --hover-bg: rgba(255, 255, 255, 0.05);
+}
+
+/* Light theme alternative */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9f9f9;
+    --bg-accent: #f0f0f0;
+    --text-primary: #333333;
+    --text-secondary: #555555;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --hover-bg: rgba(0, 0, 0, 0.02);
+  }
+}
+
+/* Table Container */
+.tenant-table-container {
+  max-width: 1000px;
+  margin: 4rem auto 4rem;
+  padding: 2rem;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px var(--shadow-color);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.tenant-table-container:hover {
+  box-shadow: 0 12px 28px var(--shadow-color);
+  transform: translateY(-2px);
+}
+
+/* Table Header */
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.table-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.table-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Table Styles */
+.tenant-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.tenant-table th,
+.tenant-table td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.tenant-table th {
+  background-color: var(--bg-accent);
+  color: var(--text-secondary);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tenant-table tr:not(:last-child) td {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tenant-table tr:hover td {
+  background-color: var(--hover-bg);
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.paid {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: var(--paid-color);
+}
+
+.pending {
+  background-color: rgba(255, 152, 0, 0.15);
+  color: var(--pending-color);
+}
+
+.overdue {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: var(--overdue-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tenant-table-container {
+    margin: 3rem auto;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .tenant-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .table-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* Animation Enhancements */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tenant-table tbody tr {
+  animation: fadeIn 0.3s ease forwards;
+  opacity: 0;
+}
+
+.tenant-table tbody tr:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.tenant-table tbody tr:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.tenant-table tbody tr:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.tenant-table tbody tr:nth-child(4) {
+  animation-delay: 0.4s;
+}
+/* Continue as needed... */
+
+/* Custom Scrollbar (for mobile overflow) */
+.tenant-table::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tenant-table::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 3px;
+}
+
+.tenant-table::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.tenant-table::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}

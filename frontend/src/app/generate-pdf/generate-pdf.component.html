@@ -1,0 +1,20 @@
+<app-navbar> </app-navbar>
+
+<form class="container" (ngSubmit)="generateRentReport()">
+  <h1>Generate Pdf</h1>
+  <label for="year">Select Year:</label>
+  <input type="number" [(ngModel)]="selectedYear" name="year" required />
+
+  <label for="month">Select Month:</label>
+  <select [(ngModel)]="selectedMonth" name="month" required>
+    <option *ngFor="let month of months" [value]="month.value">
+      {{ month.name }}
+    </option>
+  </select>
+
+  <button type="submit">Generate Rent Report</button>
+</form>
+
+<p *ngIf="reportMessage">{{ reportMessage }}</p>
+
+<app-footer></app-footer>

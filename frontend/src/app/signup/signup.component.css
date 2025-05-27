@@ -1,0 +1,142 @@
+body {
+  background-image: url(../../assets/wallpaperlogin.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.signup-container {
+  max-width: 400px;
+  margin: 4% auto;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  background-color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.signup-container h2 {
+  margin-bottom: 24px;
+  color: #333;
+  font-size: 28px;
+}
+
+.signup-container form div {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.signup-container label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.signup-container input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.signup-container input:focus {
+  border-color: #4a90e2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.signup-container button {
+  margin-top: 10px;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.signup-container button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.signup-container button:hover:not(:disabled) {
+  background-color: #357ab8;
+}
+
+.signup-container p {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.signup-container p[style] {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Custom Sign Up Button */
+.btn-danger {
+  width: 100%;
+  background: linear-gradient(135deg, #cfcc14, #a89f24);
+  border: none;
+  color: #fff;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 3px;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #969432, #a49b21);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .signup-container {
+    margin: 10% 5%;
+    padding: 25px 20px;
+  }
+
+  .signup-container h2 {
+    font-size: 24px;
+  }
+
+  .signup-container button,
+  .btn-danger {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-container {
+    margin: 25% 5%;
+    padding: 20px 16px;
+  }
+
+  .signup-container h2 {
+    font-size: 22px;
+  }
+
+  .signup-container input,
+  .signup-container button,
+  .btn-danger {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<div class="container mt-4">
+  <h2 class="section-title">Todays Food</h2>
+
+  <div *ngIf="foodItems.length === 0" class="empty-state">
+    <i class="fas fa-utensils-slash"></i>
+    <p>No food items available at the moment</p>
+  </div>
+
+  <div class="menu-grid">
+    <div class="menu-card" *ngFor="let food of foodItems">
+      <div class="card-image">
+        <div class="day-badge">{{ food.dayOfWeek }}</div>
+        <img [src]="food.images[0]" alt="{{ food.foodName }}" />
+      </div>
+      <div class="card-content">
+        <div class="card-header">
+          <h3 class="food-title">{{ food.foodName }}</h3>
+          <span class="meal-type">{{ food.mealType }}</span>
+        </div>
+
+        <p class="food-description">{{ food.foodDescription }}</p>
+
+        <div class="timing">
+          <i class="fas fa-clock"></i>
+          {{ food.mealStartTime }} - {{ food.mealEndTime }}
+        </div>
+
+        <div class="details-grid">
+          <div class="detail-item">
+            <i class="fas fa-fire"></i>
+            <span></span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-star"></i>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

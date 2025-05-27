@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+<div class="dashboard-container">
+  <!-- Add Room Form Section -->
+  <div class="form-section">
+    <h2>Add New Room</h2>
+    <form [formGroup]="addroomform" (submit)="onSubmit()">
+      <div>
+        <label for="roomNumber">Room Number:</label>
+        <input type="text" class="pod" formControlName="roomNumber" required />
+      </div>
+      <div>
+        <label for="totalbeds">Number of Beds:</label>
+        <input type="text" class="pod" formControlName="totalbeds" />
+      </div>
+      <div>
+        <label for="floor">Floor:</label>
+        <select formControlName="floor" required class="pod">
+          <option *ngFor="let floor of floors" [value]="floor">
+            {{ floor }}
+          </option>
+        </select>
+      </div>
+      <p *ngIf="message" [style.color]="messagecolor">{{ message }}</p>
+      <button type="submit">Add Room</button>
+    </form>
+  </div>
+
+  <!-- Room Management Section -->
+  <div class="room-management-section">
+    <div class="floor-selector">
+      <h3>Select Floor</h3>
+      <div class="floor-blocks">
+        <div
+          class="floor-block"
+          *ngFor="let floor of uniqueFloors"
+          (click)="selectFloor(floor)"
+          [class.active]="floor === selectedFloor"
+        >
+          {{ floor }}
+        </div>
+      </div>
+    </div>
+
+    <div class="room-list" *ngIf="selectedFloor">
+      <div class="room-list-header">
+        <h3>Rooms on {{ selectedFloor }}</h3>
+        <span class="total-rooms">{{ roomsOnSelectedFloor.length }} rooms</span>
+      </div>
+      <div class="room-cards-container">
+        <div *ngFor="let room of roomsOnSelectedFloor" class="room-card">
+          <p>Room Number: {{ room.roomNumber }}</p>
+          <p>Total Beds: {{ room.totalbeds }}</p>
+          <p>Occupied Beds: {{ room.OccupiedBeds }}</p>
+          <p>
+            Available Beds:
+            {{ room.AvailableBeds }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

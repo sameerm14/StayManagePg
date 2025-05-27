@@ -1,0 +1,10 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div *ngFor="let msg of messages">
+    <h1>{{ msg.title }}</h1>
+    <p>{{ msg.message }}</p>
+    <small>{{ msg.dateTime | date : "medium" }}</small>
+  </div>
+</div>
+
+<app-footer></app-footer>

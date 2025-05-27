@@ -1,0 +1,157 @@
+<div class="contact-page">
+  <app-navbar></app-navbar>
+
+  <main class="contact-container">
+    <section class="contact-hero">
+      <h1>Contact <span>PG StayManage</span></h1>
+      <p class="subtitle">
+        We're here to help with all your PG accommodation needs
+      </p>
+    </section>
+
+    <div class="contact-content">
+      <section class="contact-form-section">
+        <h2>Send us a message</h2>
+        <form #myform="ngForm" (ngSubmit)="onSubmit()" class="contact-form">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="username"
+              placeholder="Enter your name"
+              [(ngModel)]="contactus.fullname"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              [(ngModel)]="contactus.email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              [(ngModel)]="contactus.phone"
+              placeholder="Enter your phone number"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select
+              id="subject"
+              name="subject"
+              required
+              [(ngModel)]="contactus.subject"
+            >
+              <option value="" disabled selected>Select a subject</option>
+              <option value="booking">PG Booking Inquiry</option>
+              <option value="payment">Payment Issue</option>
+              <option value="maintenance">Maintenance Request</option>
+              <option value="feedback">Feedback/Suggestion</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              [(ngModel)]="contactus.message"
+              placeholder="Enter your message"
+              required
+            ></textarea>
+          </div>
+          <p *ngIf="message" [style.color]="messageColor">{{ message }}</p>
+          <button type="submit" class="submit-btn" [disabled]="myform.invalid">
+            Send Message
+          </button>
+        </form>
+      </section>
+
+      <section class="contact-info">
+        <h2>Our Contact Information</h2>
+        <div class="info-card">
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h3>Address</h3>
+              <p>Hanuman Nagar, Sankeshwar, Karnataka 591313</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h3>Email</h3>
+              <p>{{ email }}</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <h3>Phone</h3>
+              <p>+91 9353015312</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h3>Working Hours</h3>
+              <p>Monday - Saturday: 9:00 AM - 7:00 PM</p>
+              <p>Sunday: 10:00 AM - 2:00 PM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-media">
+          <h3>Connect With Us</h3>
+          <div class="social-icons">
+            <a
+              href="https://www.linkedin.com/in/sameer-nadaf-logged/"
+              aria-label="LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/sammy__m14/"
+              aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="https://x.com/Sameer12137002" aria-label="Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="location-map">
+      <h2>Our Location</h2>
+      <div class="map-container">
+        <!-- Replace with your actual map embed code -->
+        <div class="map-placeholder">
+          <i class="fas fa-map-marked-alt"></i>
+          <p>Map of Hanuman Nagar, Sankeshwar</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+</div>

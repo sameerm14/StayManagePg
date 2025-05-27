@@ -1,0 +1,77 @@
+<app-navbar></app-navbar>
+<div class="container mt-4" *ngIf="myRoomData; else noData">
+  <h2>My profile</h2>
+  <div class="profile-section">
+    <!-- Profile Image -->
+    <div>
+      <img
+        [src]="
+          previewUrl || myRoomData?.tProfile || 'assets/default-profile.png'
+        "
+        alt="Tenant Image"
+        width="200"
+        height="200"
+      />
+    </div>
+
+    <!-- Upload Section -->
+    <div class="upload-container">
+      <!-- Hidden file input with custom label -->
+      <label class="custom-file-upload">
+        Choose Image
+        <input
+          type="file"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          style="display: none"
+        />
+      </label>
+
+      <!-- Show selected file name (optional) -->
+      <div *ngIf="selectedFile">Selected: {{ selectedFile.name }}</div>
+
+      <!-- Upload button -->
+      <button [disabled]="!isUploadEnabled" (click)="uploadImage()">
+        Upload Profile Picture
+      </button>
+    </div>
+  </div>
+
+  <table class="table table-bordered mt-3">
+    <tr>
+      <th>Name</th>
+      <td>{{ myRoomData.name }}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{ myRoomData.email }}</td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td>{{ myRoomData.phone }}</td>
+    </tr>
+    <tr>
+      <th>Rent Paid</th>
+      <td>{{ myRoomData.rentStatus }}</td>
+    </tr>
+    <tr *ngIf="myRoomData.dueDate">
+      <th>Due Date</th>
+      <td>{{ myRoomData.dueDate | date : "mediumDate" }}</td>
+    </tr>
+    <tr>
+      <th>Room Shairing</th>
+      <td>{{ myRoomData.roomShairing }}</td>
+    </tr>
+    <tr>
+      <th>Rent</th>
+      <td>{{ myRoomData.trent }}</td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #noData>
+  <div class="alert alert-warning mt-4" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+</ng-template>
+<app-footer></app-footer>

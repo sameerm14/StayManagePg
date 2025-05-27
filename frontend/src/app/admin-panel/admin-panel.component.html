@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+
+<!-- If the user is admin, show the full dashboard -->
+<div *ngIf="userRole === 'ADMIN'">
+  <div class="dashboard-container">
+    <h2 class="dashboard-title">Welcome to StayManage {{ name }}</h2>
+    <div class="dashboard-cards">
+      <div class="card">
+        <h3>Total Rooms</h3>
+        <p class="value blue">{{ pgData?.totalRooms }}</p>
+      </div>
+      <div class="card">
+        <h3>Total Beds</h3>
+        <p class="value blue">{{ pgData?.totalBeds }}</p>
+      </div>
+      <div class="card">
+        <h3>Available Rooms</h3>
+        <p class="value blue">{{ pgData?.availableRooms }}</p>
+      </div>
+      <div class="card">
+        <h3>Occupied Rooms</h3>
+        <p class="value blue">{{ pgData?.occupiedRooms }}</p>
+      </div>
+      <div class="card">
+        <h3>Available Beds</h3>
+        <p class="value green">{{ pgData?.availableBeds }}</p>
+      </div>
+      <div class="card">
+        <h3>Occupied Beds</h3>
+        <p class="value green">{{ pgData?.occupiedBeds }}</p>
+      </div>
+
+      <div class="card">
+        <h3>Total Tenants</h3>
+        <p class="value purple">{{ pgData?.totalTenants }}</p>
+      </div>
+
+      <div class="card">
+        <h3>Rent Collected Today</h3>
+        <p class="value red">{{ pgData.trent }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- If the user is tenant, show only the welcome message -->
+<div *ngIf="userRole === 'TENANT'" class="welcome-message">
+  <div class="tenant-card">
+    <h1>Welcome,</h1>
+    <p class="greeting">You are logged in as a tenant.</p>
+    <div class="info-message">
+      <p>We're glad to have you here! 😊</p>
+      <p>
+        Feel free to explore your dashboard or contact us for any assistance.
+        We're here to make your stay comfortable.
+      </p>
+    </div>
+    <div class="actions">
+      <button class="view-details-btn" (click)="goToDashboard()">
+        View My Dashboard
+      </button>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

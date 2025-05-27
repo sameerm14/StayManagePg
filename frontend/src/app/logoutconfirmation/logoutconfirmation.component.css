@@ -1,0 +1,143 @@
+/* Dialog container styling */
+.mat-dialog-container {
+  border-radius: 12px !important;
+  padding: 24px !important;
+  max-width: 450px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+}
+body {
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+}
+/* Title styling */
+.mat-dialog-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+}
+
+/* Content area styling */
+.mat-dialog-content {
+  padding: 16px 0 !important;
+  margin: 0 !important;
+  color: #5a5a5a;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.dialog-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.warning-icon {
+  color: #ff9800;
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+/* Actions area styling */
+.mat-dialog-actions {
+  padding: 16px 0 0 0 !important;
+  margin: 0 !important;
+  min-height: auto !important;
+  justify-content: flex-end;
+}
+
+/* Button styling */
+.mat-stroked-button {
+  border: 1px solid #cfd8dc !important;
+  color: #607d8b;
+  padding: 0 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.mat-raised-button {
+  padding: 0 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mat-raised-button.mat-warn {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Hover effects */
+.mat-stroked-button:hover {
+  background-color: #f5f5f5;
+  border-color: #b0bec5 !important;
+}
+
+.mat-raised-button.mat-warn:hover {
+  background-color: #e53935;
+  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.2);
+}
+
+/* Focus effects */
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .mat-dialog-container {
+    width: 90vw !important;
+    padding: 16px !important;
+  }
+
+  .dialog-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .warning-icon {
+    margin-bottom: 8px;
+  }
+}
+/* Add to your global styles */
+.cdk-overlay-container {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.warning-icon {
+  color: #ff9800;
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

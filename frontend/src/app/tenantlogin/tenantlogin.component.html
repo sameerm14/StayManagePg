@@ -1,0 +1,39 @@
+<body>
+  <div class="container mt-4">
+    <h2>Login Tenant</h2>
+    <form (ngSubmit)="logintenant()" #tenantForm="ngForm">
+      <!-- Email -->
+      <div class="form-group mb-3">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          id="email"
+          class="form-control"
+          required
+          name="email"
+          [(ngModel)]="tenant.email"
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="form-group mb-3">
+        <label for="pass">Password</label>
+        <input
+          type="pass"
+          id="pass"
+          class="form-control"
+          required
+          name="pass"
+          [(ngModel)]="tenant.pass"
+        />
+      </div>
+      <h3 *ngIf="successMessage" [style.color]="messageColor">
+        {{ successMessage }}
+      </h3>
+      <button class="btn btn-primary">Tenant Login</button>
+      <button class="btn btn-danger" (click)="gotoRegister()">
+        Back Register
+      </button>
+    </form>
+  </div>
+</body>

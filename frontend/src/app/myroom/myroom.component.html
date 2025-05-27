@@ -1,0 +1,10 @@
+<app-navbar></app-navbar>
+<div class="room-container">
+  <p class="floor-indicator">Floor: {{ data.flooar }}</p>
+  <div class="image-gallery">
+    <div *ngFor="let img of data.images" class="gallery-item">
+      <img [src]="img" alt="Room photo" />
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

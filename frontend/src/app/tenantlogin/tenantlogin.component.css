@@ -1,0 +1,113 @@
+body {
+  background-image: url(../../assets/wallpaperlogin.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.container {
+  width: 25%;
+  margin: 10% auto;
+  padding: 10px 30px 40px 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  margin-right: 28px;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #34495e;
+  margin-bottom: 6px;
+  display: block;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+
+  border: 1px solid #dcdde1;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+  outline: none;
+}
+
+.btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  border: none;
+  color: #fff;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 3px;
+}
+
+.btn-danger {
+  width: 100%;
+  background: linear-gradient(135deg, #cb172f, #ae0a0a);
+  border: none;
+  color: #fff;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 3px;
+}
+.btn-danger:hover {
+  background: linear-gradient(135deg, #b92929, #a3245d);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #2980b9, #2471a3);
+}
+
+.alert {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.alert-success {
+  background-color: #e9f7ef;
+  color: #2ecc71;
+  border: 1px solid #d4efdf;
+}
+
+.alert-danger {
+  background-color: #fdecea;
+  color: #e74c3c;
+  border: 1px solid #f5b7b1;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
+}

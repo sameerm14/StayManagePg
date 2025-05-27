@@ -1,0 +1,63 @@
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h3>Sameer Nadaf</h3>
+      <p>Full Stack Developer & UI/UX Designer</p>
+      <div class="social-links">
+        <a href="https://github.com/sameerm14" aria-label="GitHub"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/sameer-nadaf-logged/"
+          aria-label="LinkedIn"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+        <a href="https://x.com/Sameer12137002" aria-label="Twitter"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <a href="https://www.instagram.com/sammy__m14/" aria-label="Instagram"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a routerLink="/adminPanel">Home</a></li>
+        <li><a routerLink="/about">About</a></li>
+        <li><a routerLink="/services">Services</a></li>
+        <li><a routerLink="/contactus">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact Info</h4>
+      <ul>
+        <li>
+          <i class="fas fa-map-marker-alt"></i> Hanuman Nagar, Sankeshwar, India
+        </li>
+        <li><i class="fas fa-envelope"></i> {{ email }}</li>
+        <li><i class="fas fa-phone"></i> +91 9353015312</li>
+      </ul>
+    </div>
+
+    <div class="footer-newsletter">
+      <h4>Newsletter</h4>
+      <p>Subscribe to get updates on my latest projects</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your Email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {{ currentYear }} Sameer Nadaf. All Rights Reserved.</p>
+    <div class="legal-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>

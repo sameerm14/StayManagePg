@@ -1,0 +1,37 @@
+<app-navbar> </app-navbar>
+<div class="tenant-table-container">
+  <h2>Tenant List</h2>
+  <table class="tenant-table">
+    <thead>
+      <tr>
+        <th>Tenant No</th>
+        <th>Room No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Rent Status</th>
+        <th>Remove Tenant</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tenant of tenants">
+        <td>{{ tenant.tno }}</td>
+        <td>{{ tenant.roomNumber }}</td>
+        <td>{{ tenant.name }}</td>
+        <td>{{ tenant.email }}</td>
+        <td>{{ tenant.phone }}</td>
+        <td>
+          <span
+            [class.paid]="tenant.rentStatus === true"
+            [class.pending]="tenant.rentStatus === false"
+          >
+            {{ tenant.rentStatus }}
+          </span>
+        </td>
+        <td><button (click)="removeTenant(tenant.tno)">remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-footer></app-footer>

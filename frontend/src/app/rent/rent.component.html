@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+<div class="rent-form-container">
+  <h2>Rent Payment</h2>
+
+  <form (ngSubmit)="createMonthlyRent()" #rentForm="ngForm">
+    <div class="form-group">
+      <label for="tno">Tenant Number:</label>
+      <input
+        type="text"
+        id="tno"
+        name="tno"
+        [(ngModel)]="rent.tno"
+        required
+        class="form-control"
+        placeholder="Enter Tenant Number"
+      />
+    </div>
+
+    <div class="form-group pad">
+      <label for="pmethod">Payment Method:</label>
+      <select
+        id="pmethod"
+        name="pmethod"
+        [(ngModel)]="rent.pmethod"
+        required
+        class="form-control"
+      >
+        <option value="" disabled>Select Payment Method</option>
+        <option value="UPI">UPI</option>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Debit Card">Debit Card</option>
+      </select>
+    </div>
+
+    <!-- Show UPI Options when UPI is selected -->
+    <div *ngIf="rent.pmethod === 'UPI'" class="form-group">
+      <label>Choose UPI Payment Option:</label>
+      <div>
+        <button
+          type="button"
+          class="btn btn-secondary but"
+          (click)="payWithUPI('googlepay')"
+        >
+          Google Pay
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary but"
+          (click)="payWithUPI('phonepe')"
+        >
+          PhonePe
+        </button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone Number:</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        [(ngModel)]="rent.phone"
+        required
+        class="form-control"
+        placeholder="Enter Tenant Phone Number"
+      />
+    </div>
+    <div class="form-group" *ngIf="rent.pmethod === 'UPI'">
+      <label for="transactionId">Transaction ID:</label>
+      <input
+        type="text"
+        id="transactionId"
+        name="transactionId"
+        [(ngModel)]="rent.transactionId"
+        class="form-control"
+        placeholder="Enter Transaction ID"
+        required
+      />
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!rentForm.form.valid"
+    >
+      Confirm
+    </button>
+  </form>
+</div>
+<app-footer></app-footer>

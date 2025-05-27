@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+
+<div class="rent p-6 bg-gradient-to-br from-gray-100 to-white min-h-screen">
+  <div class="max-w-7xl mx-auto space-y-10">
+    <h1 class="text-3xl font-bold text-gray-800 tracking-tight">
+      🏠 Rent Status Dashboard
+    </h1>
+
+    <!-- Rent Paid Section -->
+    <div
+      class="bg-white due1 border-l-4 border-green-500 rounded-xl shadow p-6"
+    >
+      <h2 class="text-2xl font-semibold text-green-700 flex items-center gap-2">
+        ✅ Rent Paid
+      </h2>
+      <div class="mt-4 overflow-x-auto">
+        <table class="min-w-full table-auto text-sm text-gray-700">
+          <thead
+            class="bg-green-100 text-green-800 uppercase text-xs font-semibold"
+          >
+            <tr>
+              <th class="px-5 py-3 text-left">TNO</th>
+              <th class="px-5 py-3 text-left">Name</th>
+              <th class="px-5 py-3 text-left">Phone</th>
+              <th class="px-5 py-3 text-left">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr
+              *ngFor="let rents of paidRents"
+              class="hover:bg-green-50 transition"
+            >
+              <td class="px-5 py-3">{{ rents.tno }}</td>
+              <td class="px-5 py-3 font-medium">{{ rents.name }}</td>
+              <td class="px-5 py-3">{{ rents.phone }}</td>
+              <td class="px-5 py-3">
+                <span
+                  class="inline-block bg-green-100 text-green-700 font-semibold px-3 py-1 rounded-full text-xs"
+                >
+                  Paid
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Rent Due Section -->
+    <div class="bg-white due border-l-4 border-red-500 rounded-xl shadow p-6">
+      <h2 class="text-2xl font-semibold text-red-700 flex items-center gap-2">
+        ❌ Rent Due
+      </h2>
+      <div class="mt-4 overflow-x-auto">
+        <table class="min-w-full table-auto text-sm text-gray-700">
+          <thead
+            class="bg-red-100 text-red-800 uppercase text-xs font-semibold"
+          >
+            <tr>
+              <th class="px-5 py-3 text-left">TNO</th>
+              <th class="px-5 py-3 text-left">Name</th>
+              <th class="px-5 py-3 text-left">Phone</th>
+              <th class="px-5 py-3 text-left">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr
+              *ngFor="let rents of unpaidRents"
+              class="hover:bg-red-50 transition"
+            >
+              <td class="px-5 py-3">{{ rents.tno }}</td>
+              <td class="px-5 py-3 font-medium">{{ rents.name }}</td>
+              <td class="px-5 py-3">{{ rents.phone }}</td>
+              <td class="px-5 py-3">
+                <span
+                  class="inline-block bg-red-100 text-red-700 font-semibold px-3 py-1 rounded-full text-xs"
+                >
+                  Unpaid
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

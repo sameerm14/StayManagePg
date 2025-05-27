@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+
+<div class="floor-blocks">
+  <div
+    class="floor-block"
+    *ngFor="let floor of uniqueFloors"
+    (click)="selectFloor(floor)"
+    [class.active]="floor === selectedFloor"
+  >
+    Floor {{ floor }}
+  </div>
+</div>
+
+<div *ngIf="selectedFloor !== null">
+  <h2 style="text-align: center">Rooms on {{ selectedFloor }}</h2>
+  <div
+    *ngFor="let room of getRoomsByFloor(selectedFloor)"
+    class="room-container"
+  >
+    <h3>Room Number: {{ room.roomNumber }}</h3>
+    <h3>Floor: {{ room.floor }}</h3>
+    <h3>No of tenants: {{ room.nooftenants }}</h3>
+    <!-- Displaying room images -->
+    <h4 class="imageheading">Images:</h4>
+    <div *ngIf="room.images && room.images.length > 0" class="images-section">
+      <div class="image-container" *ngFor="let image of room.images">
+        <img [src]="image" alt="Room Image" />
+      </div>
+    </div>
+    <div style="text-align: center">
+      <p
+        *ngIf="!room.images || room.images.length === 0"
+        class="no-images-message"
+      >
+        Images are not added
+      </p>
+    </div>
+
+    <button class="remove-room-btn" (click)="removeRoom(room.roomNumber)">
+      Remove Room
+    </button>
+  </div>
+</div>
+<app-footer></app-footer>
