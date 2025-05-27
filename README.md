@@ -52,12 +52,15 @@ The PG Management System is a full-featured web application designed to simplify
    cd pg-management-system/backend
 
    
-   2. Create a MySQL database:
+2. Create a MySQL database:
 
+   ```bash
    CREATE DATABASE pg_management;
 
-   4. Open src/main/resources/application.properties and update your MySQL credentials:
+4. Open src/main/resources/application.properties and update your MySQL credentials:
 
+    ```bash
+    
    spring.datasource.url=jdbc:mysql://localhost:3306/pg_management
    spring.datasource.username=your_mysql_username
    spring.datasource.password=your_mysql_password
