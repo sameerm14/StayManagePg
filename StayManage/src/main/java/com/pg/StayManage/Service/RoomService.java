@@ -45,7 +45,7 @@ public class RoomService {
                     .stream()
                     .map(image -> {
                         String imageUrl = image.getImageUrl().replaceFirst("^/uploads/", "");
-                        return "http://192.168.0.103:8080/uploads/" + imageUrl;
+                        return "http://localhost:8080/uploads/" + imageUrl;
                     })
                     .collect(Collectors.toList());
 
@@ -100,7 +100,7 @@ public class RoomService {
             for (MultipartFile file : imageFiles) {
                 String filename = file.getOriginalFilename();
                 Path uploadDir = Paths.get(
-                        "C:\\Users\\Dluci\\OneDrive\\Desktop\\StayManage\\StayManage version1\\StayManage\\uploads");
+                        "C:\\Users\\Dluci\\Desktop\\Staymanage\\StayManagePg\\StayManage\\uploads");
                 if (!Files.exists(uploadDir)) {
                     Files.createDirectories(uploadDir);
                 }

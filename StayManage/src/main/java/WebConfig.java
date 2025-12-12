@@ -9,7 +9,7 @@ public class WebConfig implements WebMvcConfigurer {
                 // Serve files from the 'uploads' folder
                 registry.addResourceHandler("/uploads/**")
                                 .addResourceLocations(
-                                                "file:/C:/Users/Dluci/OneDrive/Desktop/StayManage/StayManage version1/StayManage/uploads/");
+                                                "C:/Users/Dluci/Desktop/Staymanage/StayManagePg/StayManage/uploads");
 
         }
 }

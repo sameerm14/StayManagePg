@@ -91,7 +91,7 @@ public class TenantsFeatureService {
 
             if (tent1.getProfileUrl() != null && !tent1.getProfileUrl().isEmpty()) {
                 String imageUrl = tent1.getProfileUrl().replaceFirst("^uploads/", "");
-                String fullImageUrl = "http://192.168.0.103:8080/uploads/userimage/" + imageUrl;
+                String fullImageUrl = "http://localhost:8080/uploads/userimage/" + imageUrl;
                 myroom.settProfile(fullImageUrl);
             }
 
@@ -148,7 +148,7 @@ public class TenantsFeatureService {
                         .stream()
                         .map(image -> {
                             String imageUrl = image.getImageUrl().replaceFirst("^/uploads/", "");
-                            return "http://192.168.0.103:8080/uploads/" + imageUrl;
+                            return "http://localhost:8080/uploads/" + imageUrl;
                         })
                         .collect(Collectors.toList());
 

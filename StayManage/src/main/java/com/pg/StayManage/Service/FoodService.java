@@ -75,7 +75,7 @@ public class FoodService {
             String rawImagePath = food.getImageUrl();
 
             if (rawImagePath != null && !rawImagePath.isEmpty()) {
-                String fullUrl = "http://192.168.0.103:8080" + rawImagePath.replace("\\", "/");
+                String fullUrl = "http://localhost:8080" + rawImagePath.replace("\\", "/");
                 foodDTO.setImages(Collections.singletonList(fullUrl));
             } else {
                 foodDTO.setImages(Collections.emptyList());

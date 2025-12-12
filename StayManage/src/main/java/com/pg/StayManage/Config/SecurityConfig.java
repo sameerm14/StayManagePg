@@ -51,7 +51,7 @@ public class SecurityConfig {
         @Bean
         public UrlBasedCorsConfigurationSource corsConfigurationSource() {
                 CorsConfiguration corsConfig = new CorsConfiguration();
-                corsConfig.setAllowedOrigins(Arrays.asList("http://192.168.0.103:4200")); // Allow Angular URL
+                corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:4200")); // Allow Angular URL
                 corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                 corsConfig.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
                 corsConfig.setAllowCredentials(true);
@@ -60,7 +60,7 @@ public class SecurityConfig {
                 source.registerCorsConfiguration("/**", corsConfig);
 
                 CorsConfiguration imageCorsConfig = new CorsConfiguration();
-                imageCorsConfig.setAllowedOrigins(Arrays.asList("http://192.168.0.103:4200"));
+                imageCorsConfig.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
                 imageCorsConfig.setAllowedMethods(Arrays.asList("GET"));
                 imageCorsConfig.setAllowedHeaders(Arrays.asList("Content-Type"));
 
