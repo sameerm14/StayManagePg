@@ -6,7 +6,7 @@ import com.pg.StayManage.Repository.FoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
+import org.springframework.beans.factory.annotation.Value;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,8 +18,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Value("${file.upload-dir}")
-private String uploadDir;
 
 @Service
 public class FoodService {
@@ -27,6 +25,10 @@ public class FoodService {
     @Autowired
     private FoodRepository foodRepository;
 
+    
+    @Value("${file.upload-dir}")
+    private String uploadDir;
+    
     public List<Food> getMealsForToday() {
         String dayOfWeek = DateTimeFormatter.ofPattern("EEEE").format(LocalDate.now());
         return foodRepository.findByDayOfWeek(dayOfWeek);
