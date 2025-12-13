@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   adminUrl: 'https://staymanagepg.onrender.com/api/admin',
   roomUrl: 'https://staymanagepg.onrender.com/api/rooms',
   foodUrl: 'https://staymanagepg.onrender.com/api/food',
