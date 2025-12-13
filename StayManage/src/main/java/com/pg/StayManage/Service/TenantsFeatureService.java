@@ -11,7 +11,7 @@ import com.pg.StayManage.Repository.RentRepository;
 import com.pg.StayManage.Repository.RoomImageRepository;
 import com.pg.StayManage.Repository.RoomRepo;
 import com.pg.StayManage.Repository.TenantRepo;
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,8 +25,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Value("${file.upload-dir}")
-private String uploadDir;
+
 
 @Service
 public class TenantsFeatureService {
@@ -42,6 +41,9 @@ public class TenantsFeatureService {
     @Autowired
     private RoomImageRepository roomImageRepository;
 
+    @Value("${file.upload-dir}")
+    private String uploadDir;
+    
     public Optional<Room> getTenantsByRoomId(String roomnumber) {
         return roomRepo.findByRoomNumber(roomnumber);
 
