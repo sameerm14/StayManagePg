@@ -25,6 +25,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Value("${file.upload-dir}")
+private String uploadDir;
+
 @Service
 public class TenantsFeatureService {
 
@@ -105,35 +108,28 @@ public class TenantsFeatureService {
         }
         return null;
     }
+    
+public String saveTenantImage(String email, MultipartFile image) throws IOException {
 
-    public String saveTenantImage(String email, MultipartFile image) throws IOException {
+    Tenant tenant = tenantRepo.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Tenant not found with email: " + email));
 
-        Optional<Tenant> optionalTenant = tenantRepo.findByEmail(email);
-
-        if (optionalTenant.isEmpty()) {
-            throw new RuntimeException("Tenant not found with email: " + email);
-        }
-
-        Tenant tenant = optionalTenant.get();
-
-        // Set the path to store image
-        String uploadDir = "uploads/userimage/";
-        String originalFilename = image.getOriginalFilename();
-        String fileName = System.currentTimeMillis() + "_" + originalFilename; // To avoid conflicts
-        Path filePath = Paths.get(uploadDir, fileName);
-
-        // Ensure directories exist
-        Files.createDirectories(filePath.getParent());
-
-        // Save file
-        Files.write(filePath, image.getBytes());
-
-        // Save image path or name in DB (e.g., relative path)
-        tenant.setProfileUrl(fileName); // or setImageUrl("uploads/userimage/" + fileName);
-        tenantRepo.save(tenant);
-
-        return "Image uploaded successfully!";
+    Path userDir = Paths.get(uploadDir, "userimage");
+    if (!Files.exists(userDir)) {
+        Files.createDirectories(userDir);
     }
+
+    String fileName = System.currentTimeMillis() + "_" + image.getOriginalFilename();
+    Path filePath = userDir.resolve(fileName);
+
+    Files.copy(image.getInputStream(), filePath);
+
+    // IMPORTANT: store relative URL
+    tenant.setProfileUrl("/uploads/userimage/" + fileName);
+    tenantRepo.save(tenant);
+
+    return "Image uploaded successfully!";
+}
 
     public TRoomDto getTRoomData(String email) {
         Optional<Tenant> tent = tenantRepo.findByEmail(email);
