@@ -18,6 +18,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Value("${file.upload-dir}")
+private String uploadDir;
+
 @Service
 public class FoodService {
 
@@ -29,17 +32,21 @@ public class FoodService {
         return foodRepository.findByDayOfWeek(dayOfWeek);
     }
 
-    public void addFoodWithImage(Food food, MultipartFile imageFile) throws IOException {
-        String uploadDir = "uploads/food-images/";
-        File dir = new File(uploadDir);
-        if (!dir.exists())
-            dir.mkdirs();
-        String fileName = System.currentTimeMillis() + "_" + imageFile.getOriginalFilename();
-        Path filePath = Paths.get(uploadDir, fileName);
-        Files.write(filePath, imageFile.getBytes());
-        food.setImageUrl("/" + uploadDir + fileName);
-        foodRepository.save(food);
+public void addFoodWithImage(Food food, MultipartFile imageFile) throws IOException {
+
+    Path foodDir = Paths.get(uploadDir, "food-images");
+    if (!Files.exists(foodDir)) {
+        Files.createDirectories(foodDir);
     }
+
+    String fileName = System.currentTimeMillis() + "_" + imageFile.getOriginalFilename();
+    Path filePath = foodDir.resolve(fileName);
+    Files.copy(imageFile.getInputStream(), filePath);
+
+    food.setImageUrl("/uploads/food-images/" + fileName);
+    foodRepository.save(food);
+}
+
 
     public boolean deleteFood(Long id) {
         Food food = foodRepository.findById(id).orElse(null);
