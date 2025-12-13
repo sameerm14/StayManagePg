@@ -34,25 +34,23 @@ public class RoomService {
     @Value("${file.upload-dir}")
     private String uploadDir;
 
-    public List<RoomDto> getAllRooms() {
-        return roomRepository.findAll().stream().map(room -> {
-            RoomDto roomDTO = new RoomDto();
-            roomDTO.setRoomNumber(room.getRoomNumber());
-            roomDTO.setNooftenants(room.getNooftenants());
-            roomDTO.setFloor(room.getFloor());
+  public List<RoomDto> getAllRooms() {
+    return roomRepository.findAll().stream().map(room -> {
+        RoomDto roomDTO = new RoomDto();
+        roomDTO.setRoomNumber(room.getRoomNumber());
+        roomDTO.setNooftenants(room.getNooftenants());
+        roomDTO.setFloor(room.getFloor());
 
-            List<String> imageUrls = roomImageRepository.findByRoomNumber(room.getRoomNumber())
-                    .stream()
-                    .map(image -> {
-                        String imageUrl = image.getImageUrl().replaceFirst("^/uploads/", "");
-                        return "http://localhost:8080/uploads/" + imageUrl;
-                    })
-                    .collect(Collectors.toList());
+        List<String> imageUrls = roomImageRepository
+                .findByRoomNumber(room.getRoomNumber())
+                .stream()
+                .map(image -> image.getImageUrl()) 
+                .collect(Collectors.toList());
 
-            roomDTO.setImages(imageUrls);
-            return roomDTO;
-        }).collect(Collectors.toList());
-    }
+        roomDTO.setImages(imageUrls);
+        return roomDTO;
+    }).collect(Collectors.toList());
+}
 
     public boolean addRoom(Room room) {
         String roomnumber = room.getRoomNumber();
@@ -92,29 +90,35 @@ public class RoomService {
         }
         roomRepository.deleteByRoomNumber(roomNumber);
     }
+    
+   public void addRoomImages(String roomId, List<MultipartFile> imageFiles) throws IOException {
 
-    public void addRoomImages(String roomId, List<MultipartFile> imageFiles) throws IOException {
-        Optional<Room> optionalRoom = roomRepository.findByRoomNumber(roomId);
-        if (optionalRoom.isPresent()) {
-            Room room = optionalRoom.get();
-            for (MultipartFile file : imageFiles) {
-                String filename = file.getOriginalFilename();
-                Path uploadDir = Paths.get(
-                        "C:\\Users\\Dluci\\Desktop\\Staymanage\\StayManagePg\\StayManage\\uploads");
-                if (!Files.exists(uploadDir)) {
-                    Files.createDirectories(uploadDir);
-                }
-                Path filePath = uploadDir.resolve(filename);
-                file.transferTo(filePath.toFile());
-                RoomImage image = new RoomImage();
-                image.setImageUrl("/uploads/" + filename);
-                image.setRoomNumber(roomId);
-                image.setRoom(room);
-                roomImageRepository.save(image);
-            }
-        } else {
-            throw new RuntimeException("Room not found with id: " + roomId);
-        }
+    Optional<Room> optionalRoom = roomRepository.findByRoomNumber(roomId);
+    if (optionalRoom.isEmpty()) {
+        throw new RuntimeException("Room not found with id: " + roomId);
     }
+
+    Room room = optionalRoom.get();
+
+    Path uploadPath = Paths.get(uploadDir);
+    if (!Files.exists(uploadPath)) {
+        Files.createDirectories(uploadPath);
+    }
+
+    for (MultipartFile file : imageFiles) {
+
+        String filename = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+        Path filePath = uploadPath.resolve(filename);
+        file.transferTo(filePath.toFile());
+
+        RoomImage image = new RoomImage();
+        image.setImageUrl("/uploads/" + filename);
+        image.setRoomNumber(roomId);
+        image.setRoom(room);
+
+        roomImageRepository.save(image);
+    }
+}
+
 
 }
