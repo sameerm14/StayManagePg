@@ -1,9 +1,10 @@
+
 export const environment = {
   production: false,
-  adminUrl: 'http://192.168.0.103:8080/api/admin',
-  roomUrl: 'http://192.168.0.103:8080/api/rooms',
-  foodUrl: 'http://192.168.0.103:8080/api/food',
-  tenantUrl: 'http://192.168.0.103:8080/api/tenants',
-  tenantFUrl: 'http://192.168.0.103:8080/tenant/features',
-  contacturl: 'http://192.168.0.103:8080/contactus',
+  adminUrl: 'https://staymanagepg.onrender.com/api/admin',
+  roomUrl: 'https://staymanagepg.onrender.com/api/rooms',
+  foodUrl: 'https://staymanagepg.onrender.com/api/food',
+  tenantUrl: 'https://staymanagepg.onrender.com/api/tenants',
+  tenantFUrl: 'https://staymanagepg.onrender.com/tenant/features',
+  contacturl: 'https://staymanagepg.onrender.com/contactus',
 };
