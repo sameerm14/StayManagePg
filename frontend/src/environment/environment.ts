@@ -1,4 +1,3 @@
-
 export const environment = {
   production: false,
   adminUrl: 'https://staymanagepg.onrender.com/api/admin',
