@@ -28,9 +28,6 @@ export class TenantComponent {
       next: (response) => {
         this.message = 'Tenant added Successfully ';
         this.messageColor = 'green';
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
       },
       error: (Error) => {
         this.message = 'Tenant allready exists';
