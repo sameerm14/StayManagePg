@@ -70,7 +70,8 @@ export class AddroomsComponent {
   fetchRooms() {
     this.adminService.getAllRooms().subscribe({
       next: (data: any[]) => {
-        console.log('All rooms received:', this.allRooms);
+        console.log('Rooms fetched from backend:', data);
+
 
         this.allRooms = data;
         if (this.selectedFloor) {
