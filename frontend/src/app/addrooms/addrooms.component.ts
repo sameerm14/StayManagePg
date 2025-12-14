@@ -90,7 +90,6 @@ export class AddroomsComponent {
     );
   }
   filterRoomsByFloor(floor: string) {
-    const floorNumber = floor.charAt(0);
-    this.rooms = this.allRooms.filter((room) => room.floor == floorNumber);
+    this.rooms = this.allRooms.filter((room) => room.floor === floor);
   }
 }
