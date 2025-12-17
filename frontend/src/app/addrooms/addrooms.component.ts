@@ -60,6 +60,7 @@ export class AddroomsComponent {
         this.messagecolor = 'green';
         this.addroomform.reset();
         this.fetchRooms();
+        window.location.reload();
       },
       error: (error) => {
         this.message = 'Room is already added';
