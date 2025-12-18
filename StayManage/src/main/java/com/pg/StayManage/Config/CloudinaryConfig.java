@@ -1,4 +1,4 @@
-package com.pg.StayManage.config;
+package com.pg.StayManage.Config;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
