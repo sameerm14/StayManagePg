@@ -59,13 +59,6 @@ public class SecurityConfig {
                 UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
                 source.registerCorsConfiguration("/**", corsConfig);
 
-                CorsConfiguration imageCorsConfig = new CorsConfiguration();
-                imageCorsConfig.setAllowedOrigins(Arrays.asList("https://staymanagepg-1.onrender.com"));
-                imageCorsConfig.setAllowedMethods(Arrays.asList("GET"));
-                imageCorsConfig.setAllowedHeaders(Arrays.asList("Content-Type"));
-
-                source.registerCorsConfiguration("/uploads/**", imageCorsConfig);
-
                 return source;
         }
 }
