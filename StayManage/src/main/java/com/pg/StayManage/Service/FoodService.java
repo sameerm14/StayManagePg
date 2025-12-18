@@ -17,6 +17,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import java.util.Map;
+
 
 
 @Service
@@ -24,10 +28,10 @@ public class FoodService {
 
     @Autowired
     private FoodRepository foodRepository;
-
     
-    @Value("${file.upload-dir}")
-    private String uploadDir;
+    @Autowired
+    private Cloudinary cloudinary;
+
     
     public List<Food> getMealsForToday() {
         String dayOfWeek = DateTimeFormatter.ofPattern("EEEE").format(LocalDate.now());
@@ -36,61 +40,45 @@ public class FoodService {
 
 public void addFoodWithImage(Food food, MultipartFile imageFile) throws IOException {
 
-    Path foodDir = Paths.get(uploadDir, "food-images");
-    if (!Files.exists(foodDir)) {
-        Files.createDirectories(foodDir);
-    }
+    Map uploadResult = cloudinary.uploader().upload(
+            imageFile.getBytes(),
+            ObjectUtils.asMap(
+                    "folder", "StayManage/food"
+            )
+    );
 
-    String fileName = System.currentTimeMillis() + "_" + imageFile.getOriginalFilename();
-    Path filePath = foodDir.resolve(fileName);
-    Files.copy(imageFile.getInputStream(), filePath);
+    String imageUrl = uploadResult.get("secure_url").toString();
+    food.setImageUrl(imageUrl);
 
-    food.setImageUrl("/uploads/food-images/" + fileName);
     foodRepository.save(food);
 }
 
-
     public boolean deleteFood(Long id) {
         Food food = foodRepository.findById(id).orElse(null);
-        if (food == null) {
-            return false;
-        }
+        if (food == null) return false;
         foodRepository.delete(food);
-        String imageUrl = food.getImageUrl();
-        if (imageUrl != null && !imageUrl.isEmpty()) {
-            String fileName = imageUrl.split("/")[3];
-            String imagePath = "uploads/food-images/" + fileName;
-            File imageFile = new File(imagePath);
-            if (imageFile.exists()) {
-                boolean isDeleted = imageFile.delete();
-                if (!isDeleted) {
-                    System.out.println("Failed to delete image file: " + imagePath);
-                }
-            }
-        }
         return true;
     }
 
     public List<FoodDto> AllMeals() {
-        return foodRepository.findAll().stream().map(food -> {
-            FoodDto foodDTO = new FoodDto();
-            foodDTO.setFoodName(food.getFoodName());
-            foodDTO.setMealType(food.getMealType());
-            foodDTO.setFoodDescription(food.getFoodDescription());
-            foodDTO.setMealStartTime(food.getMealStartTime());
-            foodDTO.setMealEndTime(food.getMealEndTime());
-            foodDTO.setDayOfWeek(food.getDayOfWeek());
+    return foodRepository.findAll().stream().map(food -> {
+        FoodDto foodDTO = new FoodDto();
+        foodDTO.setFoodName(food.getFoodName());
+        foodDTO.setMealType(food.getMealType());
+        foodDTO.setFoodDescription(food.getFoodDescription());
+        foodDTO.setMealStartTime(food.getMealStartTime());
+        foodDTO.setMealEndTime(food.getMealEndTime());
+        foodDTO.setDayOfWeek(food.getDayOfWeek());
 
-            String rawImagePath = food.getImageUrl();
+        String imageUrl = food.getImageUrl();
 
-            if (rawImagePath != null && !rawImagePath.isEmpty()) {
-                String fullUrl = "http://localhost:8080" + rawImagePath.replace("\\", "/");
-                foodDTO.setImages(Collections.singletonList(fullUrl));
-            } else {
-                foodDTO.setImages(Collections.emptyList());
-            }
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            foodDTO.setImages(Collections.singletonList(imageUrl));  // use imageUrl directly
+        } else {
+            foodDTO.setImages(Collections.emptyList());
+        }
 
-            return foodDTO;
-        }).collect(Collectors.toList());
-    }
+        return foodDTO;
+    }).collect(Collectors.toList());
+}
 }
