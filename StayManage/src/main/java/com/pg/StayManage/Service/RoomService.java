@@ -5,22 +5,20 @@ import com.pg.StayManage.Model.Room;
 import com.pg.StayManage.Model.RoomImage;
 import com.pg.StayManage.Repository.RoomImageRepository;
 import com.pg.StayManage.Repository.RoomRepo;
-
 import jakarta.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import java.util.Map;
+
 
 @Service
 public class RoomService {
@@ -31,8 +29,9 @@ public class RoomService {
     @Autowired
     private RoomImageRepository roomImageRepository;
 
-    @Value("${file.upload-dir}")
-    private String uploadDir;
+    @Autowired
+    private Cloudinary cloudinary;
+
 
   public List<RoomDto> getAllRooms() {
     return roomRepository.findAll().stream().map(room -> {
@@ -91,34 +90,32 @@ public class RoomService {
         roomRepository.deleteByRoomNumber(roomNumber);
     }
     
-   public void addRoomImages(String roomId, List<MultipartFile> imageFiles) throws IOException {
+   @Transactional
+    public void addRoomImages(String roomId, List<MultipartFile> imageFiles) throws IOException {
 
-    Optional<Room> optionalRoom = roomRepository.findByRoomNumber(roomId);
-    if (optionalRoom.isEmpty()) {
-        throw new RuntimeException("Room not found with id: " + roomId);
-    }
-
-    Room room = optionalRoom.get();
-
-    Path uploadPath = Paths.get(uploadDir);
-    if (!Files.exists(uploadPath)) {
-        Files.createDirectories(uploadPath);
-    }
+    Room room = roomRepository.findByRoomNumber(roomId)
+            .orElseThrow(() -> new RuntimeException("Room not found with id: " + roomId));
 
     for (MultipartFile file : imageFiles) {
 
-        String filename = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-        Path filePath = uploadPath.resolve(filename);
-        file.transferTo(filePath.toFile());
+        Map uploadResult = cloudinary.uploader().upload(
+                file.getBytes(),
+                ObjectUtils.asMap(
+                        "folder", "StayManage/rooms"
+                )
+        );
+
+        String imageUrl = uploadResult.get("secure_url").toString();
 
         RoomImage image = new RoomImage();
-        image.setImageUrl("/uploads/" + filename);
+        image.setImageUrl(imageUrl);
         image.setRoomNumber(roomId);
         image.setRoom(room);
 
         roomImageRepository.save(image);
     }
 }
+
 
 
 }
