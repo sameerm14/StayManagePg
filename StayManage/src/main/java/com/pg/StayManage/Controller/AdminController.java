@@ -42,6 +42,11 @@ public class AdminController {
 
     }
 
+    @GetMapping("/api/health")
+    public String health() {
+        return "OK";
+    }
+    
     // Admin Login endpoint
     @PostMapping("/login")
     public ResponseEntity<loginresponse> login(@RequestBody Admin admin) {
