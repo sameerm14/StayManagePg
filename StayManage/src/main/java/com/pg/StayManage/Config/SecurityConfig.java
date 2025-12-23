@@ -30,7 +30,7 @@ public class SecurityConfig {
 
                 http.authorizeHttpRequests(auth -> auth
                                 .requestMatchers("/api/admin/register", "/api/admin/generateRentReport",
-                                                "/api/admin/login","/api/health",
+                                                "/api/admin/login","/api/admin/api/health",
                                                 "/api/tenants/tenantregister", "/api/tenants/tenantlogin",
                                                 "/uploads/**", "/contactus/contact/")
                                 .permitAll()
