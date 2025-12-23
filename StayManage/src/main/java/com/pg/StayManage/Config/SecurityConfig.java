@@ -51,7 +51,7 @@ public class SecurityConfig {
         @Bean
         public UrlBasedCorsConfigurationSource corsConfigurationSource() {
                 CorsConfiguration corsConfig = new CorsConfiguration();
-                corsConfig.setAllowedOrigins(Arrays.asList("https://staymanagepg-1.onrender.com")); // Allow Angular URL
+                corsConfig.setAllowedOrigins(Arrays.asList("https://staymanage.in","https://www.staymanage.in")); // Allow Angular URL
                 corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                 corsConfig.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
                 corsConfig.setAllowCredentials(true);
