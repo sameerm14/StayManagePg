@@ -1,9 +1,9 @@
 export const environment = {
   production: true,
-  adminUrl: 'https://staymanagepg.onrender.com/api/admin',
-  roomUrl: 'https://staymanagepg.onrender.com/api/rooms',
-  foodUrl: 'https://staymanagepg.onrender.com/api/food',
-  tenantUrl: 'https://staymanagepg.onrender.com/api/tenants',
-  tenantFUrl: 'https://staymanagepg.onrender.com/tenant/features',
-  contacturl: 'https://staymanagepg.onrender.com/contactus',
+  adminUrl: 'https://api.staymanage.in/api/admin',
+  roomUrl: 'https://api.staymanage.in/api/rooms',
+  foodUrl: 'https://api.staymanage.in/api/food',
+  tenantUrl: 'https://api.staymanage.in/api/tenants',
+  tenantFUrl: 'https://api.staymanage.in/tenant/features',
+  contacturl: 'https://api.staymanage.in/contactus',
 };
