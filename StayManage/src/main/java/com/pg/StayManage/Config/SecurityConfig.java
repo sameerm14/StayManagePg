@@ -10,6 +10,7 @@ import org.springframework.security.web.access.intercept.AuthorizationFilter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.util.Arrays;
 
@@ -26,7 +27,7 @@ public class SecurityConfig {
                 http.csrf(csrf -> csrf.disable())
                                 .cors(cors -> cors.configurationSource(corsConfigurationSource()));
 
-                http.addFilterBefore(jwtAuthFilter, AuthorizationFilter.class);
+                http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
                 http.authorizeHttpRequests(auth -> auth
                                 .requestMatchers("/api/admin/register", "/api/admin/generateRentReport",
@@ -34,11 +35,11 @@ public class SecurityConfig {
                                                 "/api/tenants/tenantregister", "/api/tenants/tenantlogin",
                                                 "/uploads/**", "/contactus/contact/")
                                 .permitAll()
-                                .requestMatchers("/api/rooms/**", "/api/tenants", "/api/food", "/rent",
-                                                "/payment", "/api/notification")
+                                .requestMatchers("/api/rooms/**", "/api/tenants/**", "/api/food/**", "/rent/**",
+                                                "/payment/**", "/api/notification/**")
 
                                 .hasRole("ADMIN")
-                                .requestMatchers("/tenant/features")
+                                .requestMatchers("/tenant/features/**")
                                 .hasRole("TENANT")
                                 .anyRequest()
                                 .authenticated());
