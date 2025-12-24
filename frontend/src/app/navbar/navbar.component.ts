@@ -37,8 +37,10 @@ export class NavbarComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
-        // Clear user data
-        localStorage.removeItem('authToken');
+      
+        localStorage.removeItem('token');
+        localStorage.removeItem('role');
+        localStorage.removeItem('username');
 
         this.router.navigate(['/login']);
         // Optional: show confirmation
