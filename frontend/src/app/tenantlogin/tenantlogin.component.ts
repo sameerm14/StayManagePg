@@ -27,7 +27,7 @@ export class TenantloginComponent {
   logintenant() {
     this.tenantservice.loginTenant(this.tenant).subscribe({
       next: (response: any) => {
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('authToken', response.token);
         localStorage.setItem('role', response.role);
         localStorage.setItem('tenantEmail', this.tenant.email);
         this.successMessage = 'Tenant login Successfull';
