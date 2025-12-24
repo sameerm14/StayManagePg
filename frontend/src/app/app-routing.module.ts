@@ -22,6 +22,7 @@ import { ViewtenantsComponent } from './viewtenants/viewtenants.component';
 import { MessageComponent } from './message/message.component';
 import { ViewnotificationsComponent } from './viewnotifications/viewnotifications.component';
 import { GeneratePdfComponent } from './generate-pdf/generate-pdf.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -43,18 +44,22 @@ const routes: Routes = [
   {
     path: 'addroomsomages',
     component: AddroomimagesComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'addrooms',
     component: AddroomsComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'showrooms',
     component: ShowroomsComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'tenants',
     component: TenantComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'Tregister',
@@ -67,18 +72,22 @@ const routes: Routes = [
   {
     path: 'food',
     component: FoodComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'RentPay',
     component: RentComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'myRoom',
     component: MyroomComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'myFood',
     component: ViewFoodComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'about',
@@ -91,30 +100,37 @@ const routes: Routes = [
   {
     path: 'myprofile',
     component: MyprofileComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'services',
     component: AservicesComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'rent-tracking',
     component: ArentsComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'viewtenant',
     component: ViewtenantsComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'notifications',
     component: MessageComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'viewnotifications',
     component: ViewnotificationsComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'generatePdf',
     component: GeneratePdfComponent,
+    canActivate: [authGuard],
   },
 ];
 
