@@ -39,7 +39,7 @@ public class SecurityConfig {
                                                 "/payment/**", "/api/notification/**")
 
                                 .hasRole("ADMIN")
-                                .requestMatchers("/tenant/features/**")
+                                .requestMatchers("/api/tenants/**","/api/food/**")
                                 .hasRole("TENANT")
                                 .anyRequest()
                                 .authenticated());
