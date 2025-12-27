@@ -11,19 +11,29 @@ import { Router } from '@angular/router';
 export class AdminPanelComponent {
   constructor(private adminService: AdminService, private router: Router) {}
   name: string | null = '';
-  pgData: any;
   userRole: string | null = '';
+  pgData: any;
 
-  ngOnInit() {
-    console.log(localStorage.getItem('username'));
-    this.name = localStorage.getItem('username');
-    this.userRole = localStorage.getItem('role');
-    this.adminService.getAllData().subscribe((data: any) => {
-      console.log('Received PG data:', data);
-      this.pgData = data;
+  
+   ngOnInit(): void {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      this.name = payload.name;
+      this.userRole = payload.role;
+    }
+
+    this.adminService.getAllData().subscribe({
+      next: (data: any) => {
+        console.log('Received PG data:', data);
+        this.pgData = data;
+      },
+      error: (err) => {
+        console.error('Error fetching PG data:', err);
+      }
     });
   }
-
   goToDashboard() {
     this.router.navigate(['./myRoom']);
   }
