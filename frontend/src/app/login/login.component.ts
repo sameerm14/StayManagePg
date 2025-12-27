@@ -31,7 +31,11 @@ export class LoginComponent {
       this.authService.login(this.loginForm.value).subscribe({
         next: (response: any) => {
           localStorage.setItem('token', response.token);
-          
+          localStorage.setItem('authToken', response.token);
+          localStorage.setItem('role', response.role);
+          console.log(response.role);
+          const usernames = this.loginForm.get('username')?.value;
+          localStorage.setItem('username', usernames);
           console.log("LOGIN RESPONSE 👉", response);
           this.message = 'Login successfull!';
           this.messageColor = 'green';
