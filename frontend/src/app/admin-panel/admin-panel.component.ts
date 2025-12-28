@@ -15,13 +15,17 @@ export class AdminPanelComponent {
   userRole: string | null = '';
 
   ngOnInit() {
-    console.log(localStorage.getItem('username'));
-    this.name = localStorage.getItem('username');
-    this.userRole = localStorage.getItem('role');
+   const token = localStorage.getItem('token');
+  if (token) {
+    const payload = token.split('.')[1]; // get the payload
+    const decodedPayload = JSON.parse(atob(payload)); // decode Base64
+    this.userRole = decodedPayload.role; // get role
+    this.name = decodedPayload.username || decodedPayload.sub; 
+    console.log('Role from token:', this.userRole);
+    console.log('Name from token:', this.name);
     this.adminService.getAllData().subscribe((data: any) => {
-      console.log('Received PG data:', data);
-      this.pgData = data;
-    });
+    this.pgData = data;
+  });
   }
   
   goToDashboard() {
