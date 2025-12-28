@@ -21,6 +21,7 @@ export class AdminPanelComponent {
     const decodedPayload = JSON.parse(atob(payload)); // decode Base64
     this.userRole = decodedPayload.role; // get role
     this.name = decodedPayload.username || decodedPayload.sub; 
+  }
     console.log('Role from token:', this.userRole);
     console.log('Name from token:', this.name);
     this.adminService.getAllData().subscribe((data: any) => {
