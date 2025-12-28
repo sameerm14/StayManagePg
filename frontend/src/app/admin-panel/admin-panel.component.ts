@@ -26,6 +26,7 @@ export class AdminPanelComponent {
     console.log('Name from token:', this.name);
     this.adminService.getAllData().subscribe((data: any) => {
     this.pgData = data;
+    console.log('Received PG data:', data);
   });
   }
   
