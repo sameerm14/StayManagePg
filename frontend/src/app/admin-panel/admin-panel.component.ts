@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../services/admin.service';
 import { Router } from '@angular/router';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-admin-panel',
@@ -13,17 +14,17 @@ export class AdminPanelComponent {
   name: string | null = '';
   pgData: any;
   userRole: string | null = '';
-  
-   ngOnInit() {
-    console.log(localStorage.getItem('username'));
-    this.name = localStorage.getItem('username');
-    this.userRole = localStorage.getItem('role');
-    this.adminService.getAllData().subscribe((data: any) => {
-      console.log('Received PG data:', data);
-      this.pgData = data;
-    });
-  }
 
+  ngOnInit() {
+   const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwt_decode(token); // decode JWT
+      this.userRole = decoded.role;           // get role from token
+      this.name = decoded.username || decoded.sub; // get username (depends on your JWT claim)
+    }
+    console.log('Role from token:', this.userRole);
+    console.log('Name from token:', this.name);
+  }
   goToDashboard() {
     this.router.navigate(['./myRoom']);
   }
