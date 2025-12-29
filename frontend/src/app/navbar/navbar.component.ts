@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit {
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
       
-        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
         localStorage.removeItem('role');
         localStorage.removeItem('username');
 
