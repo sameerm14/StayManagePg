@@ -7,7 +7,7 @@ export class AuthService {
   constructor() {}
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token'); // check if JWT exists
+    return !!sessionStorage.getItem('token'); // check if JWT exists
   }
 
   logout() {
