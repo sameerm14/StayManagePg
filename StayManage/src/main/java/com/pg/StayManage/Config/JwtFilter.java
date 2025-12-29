@@ -64,7 +64,7 @@ public class JwtFilter extends OncePerRequestFilter {
             } else if (tenant.isPresent()) {
                 Tenant tenant1 = tenant.get();
                 UsernamePasswordAuthenticationToken upat = new UsernamePasswordAuthenticationToken(tenant1, null,
-                        Collections.singleton(new SimpleGrantedAuthority("TENANT_" + admin1.getRole()));
+                        Collections.singleton(new SimpleGrantedAuthority("ROLE_" + admin1.getRole()));
                 upat.setDetails(new WebAuthenticationDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(upat);
             }
