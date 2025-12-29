@@ -30,7 +30,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
         next: (response: any) => {
-          localStorage.setItem('token', response.token);
+          sessionStorage.setItem('token', response.token);
           localStorage.setItem('authToken', response.token);
           localStorage.setItem('role', response.role);
           console.log(response.role);
