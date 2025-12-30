@@ -30,6 +30,7 @@ export class TenantloginComponent {
         sessionStorage.setItem('token', response.token);
         localStorage.setItem('role', response.role);
         localStorage.setItem('tenantEmail', this.tenant.email);
+        console.log(token);
         this.successMessage = 'Tenant login Successfull';
         this.messageColor = 'green';
         setTimeout(() => {
