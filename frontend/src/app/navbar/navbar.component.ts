@@ -39,8 +39,7 @@ export class NavbarComponent implements OnInit {
       if (confirmed) {
       
         sessionStorage.removeItem('token');
-        localStorage.removeItem('role');
-        localStorage.removeItem('username');
+        localStorage.clear();
 
         this.router.navigate(['/login']);
         // Optional: show confirmation
