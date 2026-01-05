@@ -24,16 +24,16 @@ public class TenantController {
     @Autowired
     private TenantsFeatureService tenantsFeatureService;
 
-    @PostMapping("/addtenant")
-    public ResponseEntity<Void> createTenant(@RequestBody Tenant tenant) {
-        boolean ans = tenantService.saveTenant(tenant);
-        if (ans) {
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } else {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    // @PostMapping("/addtenant")
+    // public ResponseEntity<Void> createTenant(@RequestBody Tenant tenant) {
+    //     boolean ans = tenantService.saveTenant(tenant);
+    //     if (ans) {
+    //         return new ResponseEntity<>(HttpStatus.CREATED);
+    //     } else {
+    //         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
     @PostMapping("/Paymentdone")
     public ResponseEntity<Void> rentPay(@RequestBody RentDto rentDto) {
