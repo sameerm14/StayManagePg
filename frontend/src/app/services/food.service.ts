@@ -8,6 +8,7 @@ import { environment } from '../../environment/environment';
 })
 export class foodService {
   private baseUrl = environment.foodUrl;
+  private baseUrl1 = environment.tenantFUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -16,6 +17,6 @@ export class foodService {
   }
 
   getAllFoods(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/allmeals`);
+    return this.http.get<any[]>(`${this.baseUrl1}/allmeals`);
   }
 }
