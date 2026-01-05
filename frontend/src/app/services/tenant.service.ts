@@ -7,13 +7,14 @@ import { environment } from '../../environment/environment';
   providedIn: 'root',
 })
 export class TenantService {
-  private baseUrl = environment.roomUrl;
+  private addUrl = environment.roomUrl;
+  private baseUrl = environment.tenantUrl;
   private baseTUrl = environment.tenantFUrl;
 
   constructor(private http: HttpClient) {}
 
   addTenant(tenant: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/addtenant`, tenant);
+    return this.http.post(`${this.addUrl}/addtenant`, tenant);
   }
 
   registerTenant(tenant: any): Observable<any> {
