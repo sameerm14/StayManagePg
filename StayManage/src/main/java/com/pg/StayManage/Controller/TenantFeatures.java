@@ -4,6 +4,7 @@ import com.pg.StayManage.Dto.TRoomDto;
 import com.pg.StayManage.Model.Food;
 import com.pg.StayManage.Model.Rent;
 import com.pg.StayManage.Model.Room;
+import com.pg.StayManage.Dto.FoodDto;
 import com.pg.StayManage.Repository.FoodRepository;
 import com.pg.StayManage.Service.TenantsFeatureService;
 import org.springframework.beans.factory.annotation.Autowired;
