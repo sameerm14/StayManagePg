@@ -6,6 +6,7 @@ import com.pg.StayManage.Service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import com.pg.StayManage.Model.Tenant;
 import org.springframework.web.bind.annotation.*;
 import com.pg.StayManage.Service.TenantService;
 import org.springframework.web.multipart.MultipartFile;
