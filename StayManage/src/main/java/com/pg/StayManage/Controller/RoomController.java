@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.pg.StayManage.Service.TenantService;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -21,12 +22,26 @@ public class RoomController {
     @Autowired
     private RoomService roomService;
 
+    @Autowired
+    private TenantService tenantService;
+
     @GetMapping
     public ResponseEntity<List<RoomDto>> getRooms() {
         List<RoomDto> rooms = roomService.getAllRooms();
         return ResponseEntity.ok(rooms);
     }
 
+     @PostMapping("/addtenant")
+    public ResponseEntity<Void> createTenant(@RequestBody Tenant tenant) {
+        boolean ans = tenantService.saveTenant(tenant);
+        if (ans) {
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+    
     @GetMapping("/onlyrooms")
     public ResponseEntity<List<Room>> getOnlyRooms() {
         List<Room> rooms = roomService.getOnlyRooms();
