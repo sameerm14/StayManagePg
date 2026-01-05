@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import com.pg.StayManage.Service.FoodService;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -26,6 +27,9 @@ public class TenantFeatures {
 
     @Autowired
     private FoodRepository foodRepository;
+
+    @Autowired
+    private FoodService foodService;
 
     @GetMapping("/{roomnumber}")
     public ResponseEntity<?> getTenantsRoom(@PathVariable String roomnumber) {
@@ -55,9 +59,12 @@ public class TenantFeatures {
     }
 
     @GetMapping("/allmeals")
-    public ResponseEntity<List<Food>> getallMeals() {
-        List<Food> allmeals = foodRepository.findAll();
-        return new ResponseEntity<>(allmeals, HttpStatus.OK);
+    public ResponseEntity<List<FoodDto>> getallMeals() {
+        List<FoodDto> meals = foodService.AllMeals();
+        return new ResponseEntity<>(meals, HttpStatus.OK);
+        // public ResponseEntity<List<Food>> getallMeals() {
+        // List<Food> allmeals = foodRepository.findAll();
+        // return new ResponseEntity<>(allmeals, HttpStatus.OK);
     }
 
     @PostMapping("/addImages")
