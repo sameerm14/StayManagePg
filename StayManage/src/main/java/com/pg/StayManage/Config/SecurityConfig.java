@@ -35,7 +35,7 @@ public class SecurityConfig {
                                                 "/api/tenants/tenantregister", "/api/tenants/tenantlogin",
                                                 "/uploads/**", "/contactus/contact/")
                                 .permitAll()
-                                .requestMatchers("/api/rooms/**", "/api/tenants/**", "/api/food/**", "/rent/**",
+                                .requestMatchers("/api/rooms/**", "/api/food/**", "/rent/**",
                                                 "/payment/**", "/api/notification/**")
 
                                 .hasRole("ADMIN")
