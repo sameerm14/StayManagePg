@@ -7,7 +7,7 @@ import { environment } from '../../environment/environment';
   providedIn: 'root',
 })
 export class TenantService {
-  private baseUrl = environment.tenantUrl;
+  private baseUrl = environment.roomUrl;
   private baseTUrl = environment.tenantFUrl;
 
   constructor(private http: HttpClient) {}
