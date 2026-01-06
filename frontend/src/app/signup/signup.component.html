@@ -16,7 +16,7 @@
 
       <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
     </form>
-    <p *ngIf="message" [style.color]="messageColor">{{ message }}</p>
+    <p class="message-text" *ngIf="message" [style.color]="messageColor">{{ message }}</p>
     <p>Already have an account?</p>
     <button (click)="goToLogin()">Login</button>
     <button class="btn btn-danger" (click)="goToTenant()">
