@@ -38,7 +38,7 @@ export class TenantRegisterComponent {
         }, 3000);
       },
       error: (error) => {
-        this.successMessage = 'Tenant already Registered ';
+        this.successMessage = 'Allready Registered or Admin is Not Added';
         this.messageColor = 'red';
       },
     });
