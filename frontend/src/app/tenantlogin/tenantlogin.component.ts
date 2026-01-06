@@ -43,7 +43,7 @@ export class TenantloginComponent {
         }, 3000);
       },
       error: (error) => {
-        this.successMessage = 'Login failed or Your account is not activated by admin.';
+        this.successMessage = 'Login failed or Register First';
         this.messageColor = 'red';
       },
     });
