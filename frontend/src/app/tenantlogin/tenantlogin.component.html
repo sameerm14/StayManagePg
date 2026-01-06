@@ -27,7 +27,7 @@
           [(ngModel)]="tenant.pass"
         />
       </div>
-      <h3 *ngIf="successMessage" [style.color]="messageColor">
+      <h3  class="message-text" *ngIf="successMessage" [style.color]="messageColor">
         {{ successMessage }}
       </h3>
       <button class="btn btn-primary">Tenant Login</button>
