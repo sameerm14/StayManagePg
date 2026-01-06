@@ -8,7 +8,7 @@
     <label for="roomImage">Room Image:</label>
     <input type="file" (change)="onFileChange($event)" multiple />
   </div>
-  <p *ngIf="message" [style.color]="messagecolor">{{ message }}</p>
+  <p class="message-text" *ngIf="message" [style.color]="messagecolor">{{ message }}</p>
   <button type="submit">Add images</button>
   <div class="image-previews" *ngIf="previewUrls.length > 0">
     <img *ngFor="let url of previewUrls" [src]="url" class="preview-image" />
