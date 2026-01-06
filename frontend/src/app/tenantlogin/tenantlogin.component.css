@@ -111,3 +111,16 @@ h2 {
     width: 100%;
   }
 }
+.error-text {
+  color: red;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+}
+
+.success-text {
+  color: green;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+}
