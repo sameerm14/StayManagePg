@@ -22,7 +22,7 @@ export class MessageComponent {
   sendNotification() {
     this.adminservice.sendNotification(this.notification).subscribe({
       next: (response) => {
-        this.message = 'Notification sent Successfull !';
+        this.message = 'Notification sent Successfully !';
         this.messageColor = 'green';
         setTimeout(() => {
           window.location.reload();
