@@ -123,5 +123,11 @@ Sameer Nadaf
 ## 🌐 Live Demo
 - [Live link](http://www.staymanage.in)
 
+## 🚧 Future Enhancements
+- Online rent payment integration (Stripe/PayPal)
+- SMS/WhatsApp notifications for tenants
+- Analytics dashboard for admins
+- Multi-PG owner support
+
 You can copy this **whole thing** as one README.md file for your repo. Let me know if you want me to help create the file for you!
 
