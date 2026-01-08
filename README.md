@@ -72,7 +72,7 @@ The PG Management System is a full-featured web application designed to simplify
    ```bash
    mvn spring-boot:run
 
-5. Backend will be running at: http://localhost:8080
+5. Backend will be running at: http://www.staymanage.in
 
 ## Frontend Setup (Angular)
 
@@ -91,7 +91,7 @@ The PG Management System is a full-featured web application designed to simplify
    ```bash
    ng serve
 
-4. Frontend will be running at: http://localhost:4200
+4. Frontend will be running at: http://www.staymanage.in
 
 ## 📁 Project Structure
 
@@ -113,6 +113,8 @@ This project is licensed under the MIT License.
 Sameer Nadaf
 [LinkedIn](https://www.linkedin.com/in/sameer-nadaf-logged/)
 
+## 🌐 Live Demo
+- [Live link](http://www.staymanage.in)
 
 You can copy this **whole thing** as one README.md file for your repo. Let me know if you want me to help create the file for you!
 
