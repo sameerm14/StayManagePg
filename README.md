@@ -31,6 +31,13 @@ The PG Management System is a full-featured web application designed to simplify
 - Submit maintenance requests and queries  
 - View personal rent payment history  
 
+## ⚙️ How it Works
+1. Admin logs in and manages rooms, tenants, rent, and food menus.
+2. Tenants log in to view their assigned rooms, food menus, and notifications.
+3. Angular frontend communicates with Spring Boot backend using REST APIs.
+4. Backend interacts with MySQL database (hosted on Clever Cloud) for data persistence.
+5. JWT-based authentication secures all API endpoints.
+
 ## 🛠 Tech Stack
 
 | Layer         | Technology         |
